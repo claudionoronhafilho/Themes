@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="web.NavBar" t-inherit-mode="extension" owl="1">
+        <xpath expr="//header[hasclass('o_navbar')]" position="replace">
+            <nav class="o_main_navbar"
+                data-command-category="navbar">
+                <div class="o_menu_systray_top_right">
+                    <div class="o_menu_systray d-flex">
+                        <t t-foreach="systrayItems" t-as="item" t-key="item.key">
+                            <div t-att-data-index="item.index"/>
+                            <ErrorHandler onError="error => this.handleItemError(error, item)">
+                                <t t-component="item.Component" t-props="item.props"/>
+                            </ErrorHandler>
+                        </t>
+                    </div>
+                </div>
+
+                <div class="sidebar_panel" id="sidebar_panel">
+                    <div class="sidebar" t-att-class="sidebarCompanyLogo">
+                        <div class="sidebar_logo">
+                            <div class="apps_toggle">
+                                <i class="fa fa-lg fa-bars" />
+                            </div>
+                            <img src="/web/binary/company_logo" class="logo_img x-logo"/>
+                        </div>
+
+                        <ul class="sidebar_menu">
+                            <t t-foreach="menuService.getApps()" t-as="app" t-key="app_index">
+                                <li class="parentmenu">
+                                    <a role="menuitem"
+                                    t-attf-href="#menu_id={{app.id}}"
+                                    t-att-data-app-id="app.id"
+                                    t-att-data-app-name="app.name"
+                                    t-attf-data-action-id="{{app.actionID ? app.actionID : ''}}"
+                                    t-att-data-app-children="app.children"
+                                    class="nav-link">
+                                        <img  t-att-title="app.name"
+                                            class="icon_menu"
+                                            t-attf-src="data:image/png;base64,{{app.webIconData}}"/>
+                                    </a>
+                                    <p class="menu_name">
+                                        <t t-raw="app.name"/>
+                                    </p>
+                                    <t t-if="app.children != ''">
+                                        <ul t-attf-class="accordion header-sub-menus" t-attf-id="#accordion_menu_{{app.name}}">
+                                            <p style="margin:10px;font-weight:700;font-size:15px;">
+                                                <t t-raw="app.name"/>
+                                            </p>
+                                            <t t-set="parent_menu_id" t-value="app.id"/>
+                                            <t t-foreach="app.children" t-as="menuid" t-key="menuid">
+                                                <t t-set="menu" t-value="menuService.getMenuAsTree(menuid)"/>
+                                                <t t-call="AllmenuRecursive" />
+                                            </t>
+                                        </ul>
+                                    </t>
+                                </li>
+                            </t>
+                            <div style="height: 100px" />
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </xpath>
+    </t>
+
+    <t t-name="AllmenuRecursive" owl="1">
+		<li class="nav-item" >
+			<t t-if="menu.childrenTree.length">
+				<p>
+					<a class="accordion-button collapsed d-flex align-items-center w-100 collapsed" data-bs-toggle="collapse" t-attf-data-bs-target="#child_menu_{{menu.id}}" t-att-data-menu-xmlid="menu.xmlid">
+						<span style="flex-grow: 1;"><t t-esc="menu.name"/></span>
+						<!-- <span class="menu-arrow"/> -->
+					</a>
+				</p>
+			</t>
+			<t t-else="">
+				<a t-att-data-menu="menu.id" t-attf-class="child_menus" t-attf-href="#menu_id={{menu.id}}&amp;action={{menu.actionID ? menu.actionID : ''}}" t-att-data-menu-xmlid="menu.xmlid" t-attf-data-action-id="{{menu.actionID ? menu.actionID : ''}}">
+					<span class="app_name">
+						<t t-esc="menu.name"/>
+					</span>
+				</a>
+			</t>
+			<div t-attf-id="child_menu_{{menu.id}}" class="accordion-collapse collapse" t-attf-data-bs-parent="#accordion_menu_{{app.name}}">
+				<ul t-if="menu.childrenTree.length" class="show">
+					<t t-foreach="menu.children" t-as="menuid" t-key="menuid">
+						<t t-set="menu" t-value="menuService.getMenuAsTree(menuid)"/>
+						<t t-call="AllmenuRecursive"/>
+					</t>
+				</ul>
+			</div>
+		</li>
+	</t>
+</templates>

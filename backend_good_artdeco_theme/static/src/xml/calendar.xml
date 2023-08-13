@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-inherit="web.CalendarController" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_calendar_container')]" position="replace">
+            <div class="o_calendar_container">
+                <MobileFilterPanel t-if="env.isSmall" t-props="mobileFilterPanelProps" />
+                <div t-if="showSideBar" class="o_calendar_sidebar_container d-md-block">
+                    <div class="o_calendar_sidebar">
+                        <DatePicker t-if="!env.isSmall" t-props="datePickerProps" />
+                        <FilterPanel t-props="filterPanelProps" />
+                    </div>
+                </div>
+                <t t-if="showCalendar" t-component="props.Renderer" t-props="rendererProps" />
+            </div>
+        </xpath>
+    </t>
+
+    <t t-inherit="calendar.AttendeeCalendarController" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_calendar_container')]" position="replace">
+            <div class="o_calendar_container">
+                <MobileFilterPanel t-if="env.isSmall" t-props="mobileFilterPanelProps"/>
+                <div t-if="showSideBar" class="o_calendar_sidebar_container d-md-block">
+                    <div class="o_calendar_sidebar">
+                        <DatePicker t-if="!env.isSmall" t-props="datePickerProps"/>
+                        <div id="calendar_sync_wrapper" t-if="isSystemUser">
+                            <div id="calendar_sync_title" class="o_calendar_sync text-center">
+                                <span class="text-primary fs-6">Synchronize with:</span>
+                            </div>
+                            <div id="calendar_sync" class="container inline btn-group justify-content-evenly align-items-center">
+                                <div id="google_calendar_sync" class="o_calendar_sync" t-if="isSystemUser">
+                                    <button type="button" id="google_sync_activate" class="btn btn-muted" t-on-click="() =&gt; this.configureCalendarProviderSync('google')">
+                                        <b><i class="fa fa-plug"/> Google</b>
+                                    </button>
+                                </div>
+                                <div id="microsoft_calendar_sync" class="o_calendar_sync" t-if="isSystemUser">
+                                    <button type="button" id="microsoft_sync_activate" class="btn btn-muted" t-on-click="() =&gt; this.configureCalendarProviderSync('microsoft')">
+                                        <b><i class="fa fa-plug"/> Outlook</b>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <FilterPanel t-props="filterPanelProps"/>
+                    </div>
+                </div>
+                <t t-if="showCalendar" t-component="props.Renderer" t-props="rendererProps"/>
+            </div>
+        </xpath>
+    </t>
+
+</template>

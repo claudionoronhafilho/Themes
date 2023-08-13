@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="web.SearchBar" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_searchview')]" position="after">
+            <SearchBarMenu t-if="!env.isSmall"/>
+        </xpath>
+    </t>
+</template>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="web.Pager" t-inherit-mode="extension" owl="1">
+        <xpath expr="//span[hasclass('o_pager_counter')]" position="before">
+            <span class="btn-group">
+				<button type="button" class="reload_button btn btn-light" t-on-click.stop="() =&gt; this.navigate(0)">
+                    <i class="fa fa-refresh"></i>
+                </button>
+			</span>
+        </xpath>
+    </t>
+</template>

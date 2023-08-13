@@ -1,0 +1,197 @@
+:root {
+    --SearchBar-facet-background: $o-color-primary;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	color: #656565;;
+	font-style: normal;
+}
+
+.text-odoo, .btn-link {
+    color: $o-color-secondary !important;
+}
+
+.text-bg-odoo {
+    background-color: $o-color-primary !important;
+}
+
+.text-bg-primary {
+    background-color: $o-color-secondary !important;
+}
+
+.bg-odoo {
+    background-color: $o-color-third !important;
+}
+
+.text-primary {
+    color: $o-color-secondary !important;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:disabled, .btn-odoo, .btn-outline-primary:hover {
+    background-color: $o-color-primary;
+    border-color: $o-color-primary;
+    border-radius: 10px;
+}
+
+.btn-primary:disabled, .btn-primary.disabled {
+    background-color: $o-color-primary;
+    border-color: $o-color-primary;
+    opacity: 0.5;
+}
+
+.btn-outline-primary {
+    border-color: $o-color-primary;
+    color: $o-color-primary;
+    border-radius: 10px;
+}
+
+.btn-secondary {
+    color: $o-color-secondary;
+}
+
+.nav-link {
+    color: $o-color-secondary;
+}
+
+.fc-widget-header.fc-today {
+    background: $o-color-secondary !important;
+}
+
+.o_calendar_sidebar_container {
+    border-right: 1px solid #dee2e6;
+}
+
+.o_timeoff_duration {
+    img {
+        filter: invert(38%) sepia(13%) saturate(2372%) hue-rotate(186deg) brightness(90%) contrast(90%) !important;
+    }
+}
+
+.o_onboarding_container {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.o_web_client .o_mobile_search .o_mobile_search_header {
+    background-color: $o-color-secondary;
+}
+
+.o_DiscussSidebar {
+    z-index: 1;
+}
+
+.o_main_navbar .o_MessagingMenu, .o_main_navbar .o_mail_systray_item {
+    margin-left: 0px !important;
+}
+
+.o_spreadsheet_dashboard_action .o_cp_top_right {
+    position: absolute;
+    left: 44%;
+    top: 12%;
+    gap: 10px;
+
+    .o_tags_input.o_input, .date_filter_values {
+        padding: 0 !important;
+        height: unset !important;
+    }
+}
+
+.modal-content {
+    border-radius: 10px !important;
+}
+
+.datepicker > div > table > tbody > tr > td.active {
+    background-color: $o-color-secondary;
+
+    span {
+        color: $o-color-primary;
+        font-weight: 500;
+    }
+
+    :hover {
+        background-color: $o-color-secondary;
+    }
+}
+
+.daterangepicker.show-calendar .calendar-table td.active, .daterangepicker.show-calendar .calendar-table td.active:hover, .daterangepicker.show-calendar .calendar-table td.in-range:hover {
+    background-color: $o-color-secondary !important;
+}
+
+.o_ChatterTopbar_button i {
+    color: white !important;
+}
+
+.o_ChatWindowHeader {
+    background-color: $o-color-primary;
+    padding: 10px;
+}
+
+.o_MessagingMenu_dropdownMenu:not(.o-isDeviceSmall), .o_ActivityMenuView_dropdownMenu, .dropdown-menu {
+    border-radius: 0.95rem !important;
+    padding: 10px;
+    animation: slideup-animate 0.2s ease-in-out;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    border-radius: 0.95rem;
+}
+
+.o_switch_company_menu i {
+    display: block !important;
+}
+
+.progress-bar, .o_progressbar .o_progress .o_progressbar_complete {
+    background-color: $o-color-secondary;
+}
+
+.o_loading_indicator {
+    background-color: $o-color-secondary;
+}
+
+@keyframes slide-animate {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideup-animate {
+    from {
+        transform: translateY(10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+.o_ChatWindow {
+    &:not(.o-isDeviceSmall) {
+        &:not(.o-folded) {
+            height: 100% !important;
+            right: 0 !important;
+        }
+    }
+    position: fixed !important;
+    animation: slide-animate 0.3s ease-in-out;
+}
+
+.modal-content {
+    animation: slideup-animate 0.3s ease-in-out;
+}
+
+.o_stock_forecasted_page {
+    background-color: white;
+    z-index: 250;
+    width: auto !important;
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}

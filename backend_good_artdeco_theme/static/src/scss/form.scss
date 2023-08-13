@@ -1,0 +1,126 @@
+.o_input, .o_input:hover {
+    display: inline-block;
+    width: 100%;
+    padding: 0.775rem 1rem !important;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgb(94, 98, 120);
+    background-color: rgb(245, 248, 250);
+    background-clip: padding-box;
+    border: 1px solid rgb(245, 248, 250);
+    appearance: none;
+    border-radius: 0.95rem;
+    height: 39.5px;
+}
+
+.o_required_modifier .o_input {
+    border: 1px solid rgb(94, 98, 120);
+}
+
+.o_required_modifier.o_field_invalid .o_input {
+    border: 1px solid #dc3545 !important;
+}
+
+.oe_stat_button i {
+    color: $o-color-primary
+}
+
+@media (min-width: 600px)
+{
+    .o_form_view .o_form_statusbar {
+        position: sticky !important;
+        top: 0;
+        z-index: 1;
+        border-top: 1px solid #dee2e6;
+    }
+}
+
+.o_field_many2many_selection .o_input {
+    padding: 0rem 1rem !important;
+}
+
+.o_input::placeholder {
+    color: rgb(104, 105, 111);
+    font-weight: 200;
+}
+
+.o_field_widget.o_field_many2one .o_external_button {
+    color: $o-color-secondary !important;
+    font-size: 16px !important;
+}
+
+.o_form_view:not(.o_field_highlight) .o_field_many2one_selection .o_external_button, .o_form_view:not(.o_field_highlight) .o_field_many2one_selection .o_dropdown_button {
+    visibility: visible !important;
+    padding: 8px;
+}
+
+.form-check-input:checked {
+    background-color: $o-color-secondary;
+    border-color: $o-color-secondary;
+}
+
+.o_stat_value {
+    color: $o-color-secondary !important;
+}
+
+.o_form_view .o_form_sheet_bg > .o_form_sheet {
+    margin: auto;
+    border: none !important;
+}
+
+.o_form_view.o_xxl_form_view {
+    .o_form_sheet_bg {
+        padding: unset !important;
+        .o_form_statusbar {
+            margin: unset !important;
+        }
+    }
+}
+
+.o_field_statusbar > .o_statusbar_status > .o_arrow_button.o_arrow_button_current.disabled {
+    background-color: $o-color-secondary;
+}
+
+.o_field_statusbar > .o_statusbar_status > .o_arrow_button.o_arrow_button_current.disabled:after, .o_field_statusbar > .o_statusbar_status > .o_arrow_button.o_arrow_button_current.disabled:before {
+    border-left-color: $o-color-secondary;
+}
+
+.o_hr_attendance_kiosk_backdrop {
+    background-color: unset !important;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: $o-color-primary !important;
+    font-weight: 500;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.o_form_view .o_field_float_time.oe_inline, .o_form_view .o_field_float_time.oe_left, .o_form_view .o_field_float_time.oe_right, .o_form_view .o_field_float_time.o_inner_group.oe_subtotal_footer, .o_form_view .o_field_float_time.oe_inline input, .o_form_view .o_field_float_time.oe_left input, .o_form_view .o_field_float_time.oe_right input, .o_form_view .o_field_float_time.o_inner_group.oe_subtotal_footer input {
+    max-width: 7.5ch !important;
+}
+
+@media (min-width: 1200px) {
+
+    .o_form_view .o_form_sheet_bg > .o_form_sheet,
+    .o_FormRenderer_chatterContainer:not(.o-aside):not(.o-full-width) .o_ChatterContainer {
+        max-width: unset !important;
+    }
+}
+
+@media (min-width: 1600px) {
+    .o_FormRenderer_chatterContainer.o-aside {
+        margin-top: 95px !important;
+        margin-right: 30px;
+        border-left: unset !important;
+
+        .o_ChatterContainer {
+            border-radius: 20px;
+
+            .o_Chatter {
+                padding-top: 15px;
+            }
+        }
+    }
+}
